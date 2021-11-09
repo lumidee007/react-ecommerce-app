@@ -14,6 +14,7 @@ export default class Directory extends Component {
                   imageUrl: 'https://i.ibb.co/cvpntL1/hats.png',
                   id: 1,
                   linkUrl: 'shop/hats'
+                 
                 },
                 {
                   title: 'jackets',
@@ -48,8 +49,8 @@ export default class Directory extends Component {
     render() {
         return (
             <div className = "directory-menu">
-                {this.state.sections.map(({title, id, size, imageUrl}) => (
-                    <MenuItem key ={id} title={title} size={size} imageUrl={imageUrl}/>
+                {this.state.sections.map(({id, ...restProps}) => (
+                    <MenuItem key={id} {...restProps}/>
                 )) }
             </div>
         )
