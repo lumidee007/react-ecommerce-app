@@ -4,14 +4,18 @@ import { Link } from 'react-router-dom'
 import { ReactComponent as Logo } from '../../assets/crown.svg'
 import './header.styles.scss'
 import { auth } from '../../firebase/firebase.utils'
+import CartIcon from '../CartIcon/CartIcon'
+import CartDownDown from '../CartDropDown/CartDropDown'
 
-const Header = ({currentUser}) => {
+const Header = ({currentUser, hidden}) => {
     
     return (
         <div className='header'>
             <Link to='/' className='logo'>
                 <Logo />
             </Link>
+
+
             <div className="options">
                 <Link to='/shop' className="option">
                     SHOP
@@ -28,14 +32,15 @@ const Header = ({currentUser}) => {
                 </Link>
 
                 }
+                <CartIcon />
             </div>
+
+            {hidden ? null : <CartDownDown />}
         </div>
     )
 }
 
-const mapStateToProps = globalState => ({
-    currentUser : globalState.user.currentUser
-})
+const mapStateToProps = ({user : {currentUser}, cart: {hidden}}) => ({currentUser , hidden})
 
 
-export default connect(mapStateToProps,{})(Header)
+export default connect(mapStateToProps,null)(Header)
