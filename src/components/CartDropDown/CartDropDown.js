@@ -21,7 +21,7 @@ const CartDownDown = ({cartItems, history, dispatch}) => {
                 history.push('/checkout') 
                 dispatch(toogleCartHidden())
             }}
-            >{cartItems.length ? "GO TO CHECK OUT" : "Close"}</CustomButton>
+            >GO TO CHECK OUT</CustomButton>
         </div>
     )
 }
